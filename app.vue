@@ -9,7 +9,6 @@ useHead({
 	charset: "utf-8",
 	meta: [
 		{ name: "description", content: "İsmail Karslı kişisel web sitesi." },
-		{ name: "robots", content: "index, follow" },
 		{ property: "og:type", content: "website" },
 		{ property: "og:title", content: "İsmail Karslı" },
 		{ property: "og:description", content: "İsmail Karslı kişisel web sitesi." },
