@@ -54,7 +54,7 @@ onMounted(() => {
 <template>
 	<Head>
 		<NoScript>
-			<link rel="stylesheet" href="./assets/styles/noscript.scss" />
+			<link rel="stylesheet" href="noscript.css" />
 		</NoScript>
 	</Head>
 	<div id="main" class="is-preload" :style="{ 'background-color': bgColor }">
