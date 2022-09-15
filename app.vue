@@ -23,7 +23,7 @@ const socials = [
 	{
 		name: "Mail",
 		icon: "//api.iconify.design/fa-solid/at.svg?color=white",
-		link: "mailto:cszn@protonmail.com",
+		link: "mailto:cszn@pm.me",
 		color: "#c23838",
 	},
 	{
