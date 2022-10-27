@@ -52,11 +52,6 @@ onMounted(() => {
 </script>
 
 <template>
-	<Head>
-		<NoScript>
-			<link rel="stylesheet" href="noscript.css" />
-		</NoScript>
-	</Head>
 	<div id="main" class="is-preload" :style="{ 'background-color': bgColor }">
 		<div id="overlay" />
 		<header id="header">
