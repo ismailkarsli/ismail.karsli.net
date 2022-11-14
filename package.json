@@ -9,7 +9,7 @@
 	},
 	"devDependencies": {
 		"nuxt": "3.0.0-rc.12",
-		"sass": "^1.55.0"
+		"sass": "^1.56.1"
 	},
 	"engines": {
 		"node": ">=16.0.0"
