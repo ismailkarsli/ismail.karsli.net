@@ -1,17 +1,20 @@
 {
+	"name": "ismail.karsli.net",
+	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"build": "nuxt build",
-		"dev": "nuxt dev",
-		"generate": "nuxt generate",
-		"preview": "nuxt preview",
-		"postinstall": "nuxt prepare"
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start"
 	},
-	"devDependencies": {
-		"nuxt": "3.0.0-rc.13",
-		"sass": "^1.55.0"
-	},
-	"engines": {
-		"node": ">=16.0.0"
+	"dependencies": {
+		"@next/font": "13.1.6",
+		"@types/node": "18.13.0",
+		"@types/react": "18.0.28",
+		"@types/react-dom": "18.0.10",
+		"next": "13.1.6",
+		"react": "18.2.0",
+		"react-dom": "18.2.0",
+		"typescript": "4.9.5"
 	}
 }
