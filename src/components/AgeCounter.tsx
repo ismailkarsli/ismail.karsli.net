@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 const BIRTHDAY = new Date("2000-03-10").getTime();
+const ONE_DAY = 1000 * 60 * 60 * 24;
 
 const formatter = new Intl.NumberFormat("en-US", {
 	style: "decimal",
@@ -10,7 +11,9 @@ const formatter = new Intl.NumberFormat("en-US", {
 
 const getAge = () => {
 	const diff = new Date().getTime() - BIRTHDAY;
-	return formatter.format(diff / 1000 / 60 / 60 / 24 / 365);
+	const diffDays = diff / ONE_DAY;
+	const leapDays = Math.floor(diffDays / 365 / 4);
+	return formatter.format((diffDays - leapDays) / 365);
 };
 
 export default function AgeCounter() {
