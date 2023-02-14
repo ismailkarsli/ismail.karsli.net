@@ -58,8 +58,8 @@ export default function Home() {
 				/>
 				<meta name="og:site_name" content="İsmail Karslı" />
 				<meta name="og:url" content="https://ismail.karsli.net" />
-				<meta name="og:locale" content="tr_TR" />
-				<meta name="og:locale:alternate" content="en_US" />
+				<meta name="og:locale" content="en_US" />
+				<meta name="og:locale:alternate" content="tr_TR" />
 			</Head>
 			<div
 				id="main"
@@ -69,12 +69,13 @@ export default function Home() {
 				<div id="overlay" />
 				<header id="header">
 					<h1>İsmail Karslı</h1>
-					<div className="subheading">
-						<span>Web Developer</span>•
+					<h2 className="subheading">
+						<span>Web Developer</span>
+						<span>•</span>
 						<span>
 							<AgeCounter /> yo
 						</span>
-					</div>
+					</h2>
 
 					<nav>
 						<ul>

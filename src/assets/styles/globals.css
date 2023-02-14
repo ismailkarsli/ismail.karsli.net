@@ -24,7 +24,7 @@ body {
 }
 #main.is-preload #header {
 	opacity: 0;
-	transform: translateY(25px);
+	transform: translateY(42px);
 }
 #main #overlay {
 	content: "";
@@ -40,7 +40,6 @@ body {
 	background-image: url(../images/overlay-pattern.png),
 		url(../images/overlay.svg);
 	background-position: top left, center center;
-	transition: opacity 1.5s ease-in-out;
 }
 #main #header {
 	text-align: center;
@@ -79,19 +78,19 @@ body {
 	transition: all 0.3s ease-in-out;
 }
 #main #header nav ul li {
-	min-height: 3.5em;
-	min-width: 3.5em;
+	min-height: 4em;
+	min-width: 4em;
 	line-height: 5.885em;
 	position: relative;
 	top: 0;
-	border: 2px solid white;
+	border: 1px solid white;
 	border-radius: 100%;
 	transition: all 0.3s ease-in-out;
 	background: transparent;
 }
 #main #header nav ul li:hover {
-	transform: scale(1.1);
-	background: rgba(255, 255, 255, 0.2);
+	transform: scale(1.15);
+	background: rgba(255, 255, 255, 0.3);
 }
 #main #header nav ul li a {
 	display: flex;
