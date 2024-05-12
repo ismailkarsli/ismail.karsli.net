@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import { Nunito } from "@next/font/google";
+import { Nunito } from "next/font/google";
 import AgeCounter from "@/components/AgeCounter";
 
 const nunito = Nunito({
@@ -12,35 +11,26 @@ const SOCIALS = [
 	{
 		name: "Mail",
 		icon: "//api.iconify.design/fa-solid/at.svg?color=white",
-		link: "mailto:cszn@pm.me",
-		color: "#c23838",
+		link: "mailto:ismail@karsli.net",
 	},
 	{
 		name: "Linkedin",
 		icon: "//api.iconify.design/fa-brands/linkedin.svg?color=white",
-		color: "#0077B5",
 		link: "https://www.linkedin.com/in/ismailkarsli/",
 	},
 	{
 		name: "Github",
 		icon: "//api.iconify.design/fa-brands/github.svg?color=white",
-		color: "#333",
 		link: "https://github.com/ismailkarsli",
 	},
 	{
 		name: "Discord",
 		icon: "//api.iconify.design/fa-brands/discord.svg?color=white",
-		color: "#7289DA",
 		link: "https://discord.com/users/192420948480098304",
 	},
 ];
 
 export default function Home() {
-	const [bgColor, setBgColor] = useState<string | undefined>();
-
-	useEffect(() => {
-		document.querySelector("#main")?.classList.remove("is-preload");
-	}, []);
 	return (
 		<>
 			<Head>
@@ -61,16 +51,12 @@ export default function Home() {
 				<meta name="og:locale" content="en_US" />
 				<meta name="og:locale:alternate" content="tr_TR" />
 			</Head>
-			<div
-				id="main"
-				className={"is-preload " + nunito.className}
-				style={{ backgroundColor: bgColor }}
-			>
+			<div id="main" className={nunito.className}>
 				<div id="overlay" />
 				<header id="header">
 					<h1>İsmail Karslı</h1>
 					<h2 className="subheading">
-						<span>Web Developer</span>
+						<span>Software Developer</span>
 						<span>•</span>
 						<span>
 							<AgeCounter /> yo
@@ -80,11 +66,7 @@ export default function Home() {
 					<nav>
 						<ul>
 							{SOCIALS.map((social) => (
-								<li
-									key={social.name}
-									onMouseEnter={() => setBgColor(social.color)}
-									onMouseLeave={() => setBgColor(undefined)}
-								>
+								<li key={social.name}>
 									<a href={social.link} title={social.name} target="_blank">
 										<img src={social.icon} />
 										<span className="label">{social.name}</span>
