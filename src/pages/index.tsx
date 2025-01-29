@@ -57,7 +57,7 @@ export default function Home() {
 					<h1>İsmail Karslı</h1>
 					<h2 className="subheading">
 						<span>{t("Software Developer")}</span>
-						<span>•</span>
+						<span style={{ userSelect: "none" }}>•</span>
 						<span>
 							<AgeCounter /> {t("yo")}
 						</span>
