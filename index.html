@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charSet="utf-8" />
+	<title>İsmail Karslı</title>
+	<meta name="description" content="A personal web site no one cares." />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="theme-color" content="#000000" />
+	<meta name="og:type" content="website" />
+	<meta name="og:title" content="İsmail Karslı" />
+	<meta name="og:site_name" content="İsmail Karslı" />
+	<meta name="og:url" content="https://ismail.karsli.net" />
+	<meta name="og:locale" content="en_US" />
+	<link rel="icon" href="/favicon.ico" />
+	<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+	<link rel="stylesheet" href="/styles/main.css" />
+</head>
+
+<body>
+	<div id="main">
+		<div id="overlay"></div>
+		<header id="header">
+			<h1>İsmail Karslı</h1>
+			<h2 class="subheading">
+				<span>Software Developer</span>
+				<span style="user-select: none;">•</span>
+				<span id="age-counter">12.34567890 yo</span>
+			</h2>
+			<nav>
+				<ul>
+					<li>
+						<a href="mailto:ismail@karsli.net" title="Mail" target="_blank">
+							<img src="https://api.iconify.design/fa-solid/at.svg?color=white" alt="Mail" />
+							<span class="label">Mail</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.linkedin.com/in/ismailkarsli/" title="Linkedin" target="_blank">
+							<img src="https://api.iconify.design/fa-brands/linkedin.svg?color=white" alt="Linkedin" />
+							<span class="label">Linkedin</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/ismailkarsli" title="Github" target="_blank">
+							<img src="https://api.iconify.design/fa-brands/github.svg?color=white" alt="Github" />
+							<span class="label">Github</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://discord.com/users/192420948480098304" title="Discord" target="_blank">
+							<img src="https://api.iconify.design/fa-brands/discord.svg?color=white" alt="Discord" />
+							<span class="label">Discord</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+	</div>
+
+	<script type="module">
+		const BIRTHDAY = new Date("2000-03-10").getTime();
+		const ONE_DAY = 1000 * 60 * 60 * 24;
+
+		const formatter = new Intl.NumberFormat("en-GB", {
+			style: "decimal",
+			minimumFractionDigits: 8,
+			maximumFractionDigits: 8,
+		});
+
+		const getAge = () => {
+			const diff = new Date().getTime() - BIRTHDAY;
+			const diffDays = diff / ONE_DAY;
+			const leapDays = Math.floor(diffDays / 365 / 4);
+			return formatter.format((diffDays - leapDays) / 365);
+		};
+
+		const ageCounter = document.querySelector("#age-counter");
+		setInterval(() => {
+			ageCounter.innerText = `${getAge()} yo`;
+		}, 100);
+	</script>
+</body>
+
+</html>

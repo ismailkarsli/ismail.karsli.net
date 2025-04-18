@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@media screen and (max-width: 480px) {
+	html {
+		font-size: 13px;
+	}
+}
+
+body {
+	font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#main {
+	background-color: #0077b5;
+	color: #fff;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#main #overlay {
+	content: "";
+	background-repeat: repeat, no-repeat;
+	background-size: auto, cover;
+	height: 200%;
+	left: 0;
+	opacity: 1;
+	position: fixed;
+	top: 0;
+	width: 200%;
+	background-attachment: fixed, fixed;
+	background-image: url(/images/overlay-pattern.png),
+		url(/images/overlay.svg);
+	background-position: top left, center center;
+}
+
+#main #header {
+	text-align: center;
+	opacity: 1;
+	transform: translateY(0);
+	width: 80%;
+
+	h1 {
+		font-size: 4.5em;
+		font-weight: 600;
+		letter-spacing: -0.035em;
+		line-height: 1em;
+		margin: 0;
+	}
+	.subheading {
+		font-size: 1.25em;
+		font-weight: 300;
+		margin: 0.75em 0 0.25em 0;
+		opacity: 0.75;
+		display: flex;
+		gap: 0.5em;
+		justify-content: center;
+	}
+}
+
+#main #header nav {
+	margin-top: 1.5em;
+	ul {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		flex-wrap: wrap;
+		transition: all 0.3s ease-in-out;
+		li {
+			min-height: 4em;
+			min-width: 4em;
+			line-height: 5.885em;
+			position: relative;
+			top: 0;
+			border: 1px solid white;
+			border-radius: 100%;
+			transition: all 0.3s ease-in-out;
+			background: transparent;
+
+			a {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100%;
+				width: 100%;
+
+				img {
+					min-height: 1.4em;
+					min-width: 1.4em;
+				}
+
+				.label {
+					display: none;
+				}
+				
+			}
+		}
+		li:hover {
+			transform: scale(1.15);
+			background-color: rgba(255, 255, 255, 0.3);
+		}
+	}
+}
