@@ -5,27 +5,40 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>İsmail Karslı CV</title>
+	<script type="importmap">
+		{
+			"imports": {
+				"vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js",
+				"vue-i18n": "https://unpkg.com/vue-i18n@11/dist/vue-i18n.esm-browser.js"
+			}
+		}
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<style type="text/tailwindcss">
+		/* dark mode support */
+		@custom-variant dark (&:where(.dark, .dark *));
+	</style>
 	<meta name="robots" content="noindex" />
 </head>
 
-<body class="m-4">
-	<div id="cv-page-container" class="mx-auto relative min-w-[210mm] min-h-[297mm] max-w-[210mm] max-h-[297mm] border-2">
-		<div class="font-medium">
-			<div class="mx-auto w-0.5 h-[14mm] bg-black"></div>
+<body class="m-4 bg-white dark:bg-gray-800 dark">
+	<noscript>
+		Please enable JavaScript or consider upgrading your web browser in order to view this page.
+	</noscript>
+	<div id="app">
+		<div id="cv-page"
+			class="mx-auto relative min-w-[210mm] min-h-[297mm] max-w-[210mm] max-h-[297mm] border-2 bg-white dark:bg-gray-800 dark:text-white">
+			<div class="mx-auto w-0.5 h-[14mm] bg-black dark:bg-white"></div>
 			<div class="text-center my-[3mm]">
 				<h1 class="text-[2.5rem] font-bold tracking-wide">İSMAİL KARSLI</h1>
-				<h2>Software Developer</h2>
+				<h2>{{ t("Software Developer") }}</h2>
 			</div>
-			<div class="mx-auto w-[190mm] mt-2 h-0.5 bg-black"></div>
+			<div class="mx-auto w-[190mm] mt-2 h-0.5 bg-black dark:bg-white"></div>
 			<div class="flex justify-between mx-12 my-4">
-				<div class="w-3/4 flex flex-col gap-3">
-					<h3 class="font-bold tracking-wide text-lg">ABOUT ME</h3>
+				<div class="w-3/4 flex flex-col gap-2">
+					<h3 class="font-bold tracking-wide text-lg">{{ t("ABOUT ME") }}</h3>
 					<p class="text-sm">
-						I'm İsmail Karslı, a full-stack developer focused on building modern, scalable web applications. Currently
-						at
-						Magnus AI, I work on financial software and API integrations. I'm passionate about learning and solving
-						real-world problems.
+						{{ t(`about_me`) }}
 					</p>
 				</div>
 				<div class="text-sm">
@@ -49,7 +62,7 @@
 							</div>
 						</li>
 						<li>
-							<a href="mailto:ismail@karsli.net" class="flex items-center gap-1 text-blue-800">
+							<a href="mailto:ismail@karsli.net" class="flex items-center gap-1 text-blue-800 dark:text-blue-300">
 								<svg width="24px" height="24px" viewBox="-2.4 -2.4 28.80 28.80" fill="none"
 									xmlns="http://www.w3.org/2000/svg">
 									<g stroke-width="0"></g>
@@ -72,7 +85,7 @@
 						</li>
 						<li>
 							<a href="https://www.linkedin.com/in/ismailkarsli" target="_blank"
-								class="flex items-center gap-1 text-blue-800">
+								class="flex items-center gap-1 text-blue-800 dark:text-blue-300">
 								<svg width="24px" height="24px" viewBox="-4.4 -4.4 52.80 52.80" version="1.1"
 									xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
 									<g stroke-width="0"></g>
@@ -91,7 +104,8 @@
 							</a>
 						</li>
 						<li>
-							<a href="https://ismail.karsli.net" target="_blank" class="flex items-center gap-1 text-blue-800">
+							<a href="https://github.com/ismailkarsli" target="_blank"
+								class="flex items-center gap-1 text-blue-800 dark:text-blue-300">
 								<svg width="24px" height="24px" viewBox="-2 -2 24.00 24.00" version="1.1"
 									xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
 									<g stroke-width="0"></g>
@@ -115,109 +129,100 @@
 				</div>
 			</div>
 			<table class="mx-auto w-[190mm] mt-2 text-sm">
-				<thead>
-					<tr>
-						<th class="text-left border-black border-y-2 border-r-2 p-2 text-lg">EDUCATION</th>
-						<th class="text-left border-black border-y-2 p-2 pl-12 text-lg">WORK EXPERIENCE</th>
-					</tr>
-				</thead>
 				<tbody>
 					<tr>
-						<td class="border-black border-r-2 p-2 w-1/3 align-top">
-							<div class="my-4">
-								<h4 class="font-bold text-base mb-2">2019 - 2021</h4>
-								<p class="mb-2">Computer Programming</p>
-								<ul class="list-disc list-inside">
-									<li>Uludag University</li>
-									<li>Bursa, Turkiye</li>
+						<td class="border-black dark:border-white border-r-2 border-t-2 p-2 w-1/3 align-top">
+							<div class="mt-4 mb-8">
+								<h4 class="text-left font-bold text-lg mb-2">{{ t("EDUCATION") }}</h4>
+								<h5 class="mb-2">{{ t("Associate's Degree in Computer Programming") }}</h5>
+								<ul class="list-disc ">
+									<li>{{ t("Uludag University") }}</li>
+									<li>2019 - 2021</li>
+									<li>{{ t("Bursa, Turkiye") }}</li>
 								</ul>
 							</div>
-							<div class="my-4">
-								<h4 class="text-left font-bold text-lg mb-2">LANGUAGES</h4>
-								<ul class="list-disc list-inside">
-									<li>Turkish: Native</li>
-									<li>English: Intermediate</li>
+							<div class="my-8">
+								<h4 class="text-left font-bold text-lg mb-2">{{ t("LANGUAGES") }}</h4>
+								<ul class="list-disc ">
+									<li>{{ t("Turkish") }}: {{ t("Native") }}</li>
+									<li>{{ t("English") }}: {{ t("Intermediate") }}</li>
 								</ul>
 							</div>
-							<div class="my-4">
-								<h4 class="text-left font-bold text-lg mb-2">PERSONAL PROJECTS</h4>
-								<ul class="list-disc list-inside">
+							<div class="my-8">
+								<h4 class="text-left font-bold text-lg mb-2">
+									{{ t("PERSONAL PROJECTS") }}
+								</h4>
+								<ul class="list-disc ">
 									<li>
-										<a href="https://lemmy-federate.com" target="_blank" class="text-blue-800">
+										<a href="https://lemmy-federate.com" target="_blank" class="text-blue-800 dark:text-blue-300">
 											Lemmy Federate
 										</a>
+										<i18n-t keypath="lemmy_federate_description" tag="p" scope="global">
+											<a href="https://en.wikipedia.org/wiki/Fediverse" target="_blank"
+												class="text-blue-800 dark:text-blue-300">Fediverse</a>
+										</i18n-t>
 									</li>
 									<li>
-										<a href="https://github.com/ismailkarsli/kick-tools" target="_blank" class="text-blue-800">
+										<a href="https://chromewebstore.google.com/detail/kick-tools/ochiknnmgneaijepaphkhiphdfokjaah"
+											target="_blank" class="text-blue-800 dark:text-blue-300">
 											Kick Tools
 										</a>
+										<p>
+											{{ t("Browser extension that enhances the UX on Kick.com.") }}
+										</p>
+									</li>
+									<li>
+										<a href="https://github.com/ismailkarsli/lise" target="_blank"
+											class="text-blue-800 dark:text-blue-300">
+											High School Site
+										</a>
+										<p>
+											{{ t("A simple and lightweight website for high schools using React and Tailwind CSS.") }}
+										</p>
 									</li>
 								</ul>
 							</div>
-							<div class="my-4">
-								<h4 class="text-left font-bold text-lg mb-2">INTERESTS & HOBBIES</h4>
-								<ul class="list-disc list-inside">
-									<li>Creating and contributing to open source projects.</li>
+							<div class="my-8">
+								<h4 class="text-left font-bold text-lg mb-2">
+									{{ t("INTERESTS & HOBBIES") }}
+								</h4>
+								<ul class="list-disc ">
+									<li>{{ t("Creating and contributing to open source projects.") }}</li>
+									<li>{{ t("Experimenting with Rust in my spare time.") }}</li>
+									<li>{{ t("Learning English.") }}</li>
 								</ul>
 							</div>
 						</td>
-						<td class="p-2 pl-12 align-top">
-							<div class="mt-4 mb-8">
+						<td class="p-2 pl-12 align-top border-black dark:border-white border-t-2">
+							<h4 class="text-left font-bold text-lg mt-4 leading-none">
+								{{ t("WORK EXPERIENCE") }}
+							</h4>
+							<div v-for="job of employmentHistory" class="my-4">
 								<h4 class="mb-2 flex justify-between">
-									<span class="font-bold text-base">
-										Magnus AI
-									</span>
-									<span>Feb 2022 - present</span>
+									<a :href="job.employerUrl" target="_blank"
+										class="font-bold text-base text-blue-800 dark:text-blue-300">
+										{{ t(job.employer) }}
+									</a>
+									<p>
+										<i18n-d tag="span" :value="job.startDate" :format="{month:'short', year: 'numeric'}"></i18n-d>
+										-
+										<span v-if="job.endDate === 'present'">{{ t("present") }}</span>
+										<i18n-d v-else tag="span" :value="job.endDate" :format="{month:'short', year: 'numeric'}"></i18n-d>
+									</p>
 								</h4>
-								<h5 class="mb-4 leading-2">Full Stack Developer</h5>
-								<ul class="list-disc list-inside">
-									<li>Created backend services for financial applications.</li>
-									<li>Made external API integrations for financial data.</li>
-									<li>Designed and implemented user interfaces.</li>
-									<li>Built automatic testing, build and deployment processes with CI/CD integration.</li>
+								<h5 class="mb-4 leading-2">
+									{{ job.position }}
+								</h5>
+								<ul class="list-disc ">
+									<li v-for="desc in job.description">
+										{{ desc }}
+									</li>
 								</ul>
 								<br />
-								<p>
-									<b>Technologies</b>: TypeScript, Python, Node.js, PostgreSQL, MongoDB, Vue.js, Tailwind CSS etc.
-								</p>
-							</div>
-							<div class="mt-4 mb-8">
-								<h4 class="mb-2 flex justify-between">
-									<span class="font-bold text-base">
-										Fintech Software Services
-									</span>
-									<span>Jul 2021 - Jan 2022</span>
-								</h4>
-								<h5 class="mb-4 leading-2">Full Stack Developer</h5>
-								<ul class="list-disc list-inside">
-									<li>Built SSR applications with Nuxt.js.</li>
-									<li>Developed backend services with Node.js and MSSQL.</li>
-									<li>Modernized deployment and load balancing with Docker Swarm, Jenkins CI and Traefik.</li>
-								</ul>
-								<br />
-								<p>
-									<b>Technologies</b>: JavaScript, Node.js, MSSQL, Nuxt.js, Vue.js, Bootstrap, Docker, Jenkins CI,
-									Traefik
-									etc.
-								</p>
-							</div>
-
-							<div class="mt-4 mb-8">
-								<h4 class="mb-2 flex justify-between">
-									<span class="font-bold text-base">
-										İnteraktif İş Internet Services
-									</span>
-									<span>Jul 2020 - Oct 2020</span>
-								</h4>
-								<h5 class="mb-4 leading-2">Frontend Developer (part-time)</h5>
-								<ul class="list-disc list-inside">
-									<li>Developed a backend API.</li>
-									<li>Built admin panel and user interface with React.</li>
-									<li>Built a mobile application using React Native.</li>
-								</ul>
-								<br />
-								<p>
-									<b>Technologies</b>: Node.js, Prisma ORM, GraphQL, Express, React, React Native, Tailwind CSS etc.
+								<p v-if="job.technologies && job.technologies.length > 0">
+									<b>{{ t("Technologies") }}</b>:
+									{{ job.technologies.join(', ') }}
+									{{ t("etc.") }}
 								</p>
 							</div>
 						</td>
@@ -225,13 +230,174 @@
 				</tbody>
 			</table>
 		</div>
+		<div class="flex gap-4 justify-center mt-4">
+			<button type="button" class="bg-gray-500 text-white px-4 py-2 rounded cursor-pointer" @click="toggleTheme">
+				{{ theme === "dark" ? t('Dark mode') : t('Light mode') }}
+			</button>
+			<button type="button" class="bg-gray-500 text-white px-4 py-2 rounded cursor-pointer" @click="changeLocale">
+				{{ locale.startsWith("en") ? 'English' : 'Türkçe' }}
+			</button>
+			<a :href="downloadLink" class="bg-gray-500 text-white px-4 py-2 rounded cursor-pointer">
+				{{ t("Download") }}
+			</a>
+		</div>
 	</div>
 
+	<script type="module">
+		import { createApp, ref, computed, onMounted } from "vue"
+		import { createI18n, useI18n } from "vue-i18n"
+
+		const i18n = createI18n({
+			fallbackLocale: "en",
+			formatFallbackMessages: true,
+			missingWarn: true,
+			fallbackWarn: false,
+			legacy: false,
+			mode: "composition",
+			messages: {
+				// only long or dynamic messages needs to be in English list
+				en: {
+					about_me: "I'm İsmail Karslı, a full-stack developer focused on building modern, scalable web applications. At Magnus AI, I work on financial software and API integrations. I'm passionate about learning and solving real-world problems.",
+					lemmy_federate_description: `A tool that help {0} instances connect with each other.`
+				},
+				tr: {
+					"Switch to light mode": "Açık moda geç",
+					"Switch to dark mode": "Karanlık moda geç",
+					"Download as PDF": "PDF Olarak İndir",
+					"Software Developer": "Yazılım Geliştirici",
+					"ABOUT ME": "HAKKIMDA",
+					about_me: "Ben İsmail Karslı, modern ve ölçeklenebilir web uygulamaları geliştirmeye odaklanan bir full-stack geliştiriciyim. Magnus AI'da finansal yazılımlar ve API entegrasyonları üzerinde çalışıyorum. Gerçek dünya problemlerini öğrenmeye ve çözmeye tutkuluyum.",
+					EDUCATION: "EĞİTİM",
+					"Associate's Degree in Computer Programming": "Bilgisayar Programcılığı Önlisans Diploması",
+					"Uludag University": "Uludağ Üniversitesi",
+					"Bursa, Turkiye": "Bursa, Türkiye",
+					"LANGUAGES": "DİLLER",
+					"Turkish": "Türkçe",
+					"English": "İngilizce",
+					"Native": "Ana Dil",
+					"Intermediate": "Orta Seviye",
+					"PERSONAL PROJECTS": "KİŞİSEL PROJELER",
+					"lemmy_federate_description": `{0} örneklerinin birbiriyle iletişim kurmasına yardımcı olan bir araç.`,
+					"Browser extension that enhances the UX on Kick.com.": "Kick.com'daki kullanıcı deneyimini geliştiren bir tarayıcı uzantısı.",
+					"A simple and lightweight website for high schools using React and Tailwind CSS.": "React ve Tailwind CSS kullanarak liseler için basit ve hafif bir web sitesi.",
+					"INTERESTS & HOBBIES": "İLGİ ALANI & HOBİLER",
+					"Creating and contributing to open source projects.": "Açık kaynak projeler oluşturmak ve katkıda bulunmak.",
+					"Experimenting with Rust in my spare time.": "Boş zamanlarımda Rust ile denemeler yapmak.",
+					"Learning English.": "İngilizce öğrenmek.",
+					"WORK EXPERIENCE": "İŞ DENEYİMİ",
+					"Full Stack Developer": "Full Stack Geliştirici",
+					"Frontend Developer": "Frontend Geliştirici",
+					"present": "günümüz",
+					"etc.": "vb.",
+					"Technologies": "Teknolojiler",
+					"Developed scalable backend services supporting financial applications using Node.js and TypeScript.": "Node.js ve TypeScript kullanarak finansal uygulamaları destekleyen ölçeklenebilir backend servisleri geliştirdim.",
+					"Integrated external APIs for real-time financial data.": "Gerçek zamanlı finansal veriler için harici API'leri entegre ettim.",
+					"Designed and implemented user interfaces.": "Kullanıcı arayüzlerini tasarladım ve uyguladım.",
+					"Streamlined build, test and deployment pipelines using CI/CD.": "Derleme, test ve dağıtım süreçlerini CI/CD ile optimize ettim.",
+					"Developed Server-Side Rendered (SSR) applications using Nuxt.js.": "Nuxt.js kullanarak Server-Side Rendered (SSR) uygulamalar geliştirdim.",
+					"Developed backend services with Node.js and MSSQL.": "Node.js ve MSSQL ile backend hizmetleri geliştirdim.",
+					"Improved deployment strategies and load balancing using Docker Swarm, Jenkins CI, and Traefik.": "Docker Swarm, Jenkins CI ve Traefik kullanarak dağıtım stratejilerini ve yük dengelemesini geliştirdim.",
+					"Developed a backend API using Node.js and Prisma.": "Node.js ve Prisma kullanarak bir backend API geliştirdim.",
+					"Created admin panel and user interface with React.": "React ile yönetici paneli ve kullanıcı arayüzü oluşturdum.",
+					"İnteraktif İş Internet Services": "İnteraktif İş İnternet Hizmetleri",
+				}
+			}
+		})
+
+
+		const app = createApp({
+			setup() {
+				const { t, locale } = useI18n()
+				const theme = ref(localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"))
+				const downloadLink = computed(() => {
+					const localeShort = locale.value.startsWith("tr") ? "tr" : "en"
+					if (localeShort === "en") return "/ismail-karsli-cv-tr.pdf"
+					return "/ismail-karsli-cv.pdf"
+
+				})
+				const employmentHistory = computed(() => [
+					{
+						employer: "Magnus AI",
+						employerUrl: "https://getmagnus.com",
+						position: t("Full Stack Developer"),
+						startDate: new Date("2022-02"),
+						endDate: "present",
+						description: [
+							t("Developed scalable backend services supporting financial applications using Node.js and TypeScript."),
+							t("Integrated external APIs for real-time financial data."),
+							t("Designed and implemented user interfaces."),
+							t("Streamlined build, test and deployment pipelines using CI/CD.")
+						],
+						technologies: [
+							"TypeScript", "Python", "Node.js", "PostgreSQL", "MongoDB", "Vue.js", "Tailwind CSS"
+						]
+					},
+					{
+						employer: "Fintech Yazılım",
+						employerUrl: "https://www.fintechyazilim.com/",
+						position: t("Full Stack Developer"),
+						startDate: new Date("2021-07"),
+						endDate: new Date("2022-01"),
+						description: [
+							t("Developed Server-Side Rendered (SSR) applications using Nuxt.js."),
+							t("Developed backend services with Node.js and MSSQL."),
+							t("Improved deployment strategies and load balancing using Docker Swarm, Jenkins CI, and Traefik.")
+						],
+						technologies: [
+							"JavaScript", "Node.js", "MSSQL", "Nuxt.js", "Vue.js", "Bootstrap", "Docker", "Jenkins CI", "Traefik"
+						]
+					},
+					{
+						employer: "İnteraktif İş Internet Services",
+						employerUrl: "https://www.linkedin.com/company/interaktifis/",
+						position: t("Frontend Developer"),
+						startDate: new Date("2020-07"),
+						endDate: new Date("2020-10"),
+						description: [
+							t("Developed a backend API using Node.js and Prisma."),
+							t("Created admin panel and user interface with React.")
+						],
+						technologies: [
+							"Node.js", "Prisma ORM", "GraphQL", "Express", "React", "React Native", "Tailwind CSS"
+						]
+					}
+				])
+
+				const changeLocale = () => {
+					locale.value = locale.value.startsWith("en") ? "tr" : "en"
+				}
+				const toggleTheme = () => {
+					theme.value = theme.value === "dark" ? "light" : "dark"
+					document.body.classList.toggle("dark", theme.value === "dark")
+					document.querySelector("#cv-page").classList.toggle("dark", theme.value === "dark")
+					localStorage.setItem("theme", theme.value)
+				}
+
+				onMounted(() => {
+					document.body.classList.toggle("dark", theme.value === "dark")
+					document.querySelector("#cv-page").classList.toggle("dark", theme.value === "dark")
+				})
+
+				return {
+					t, locale,
+					theme,
+					employmentHistory,
+					downloadLink,
+					changeLocale,
+					toggleTheme,
+				}
+			}
+		})
+		app.use(i18n)
+		app.mount('#app')
+
+	</script>
+
 	<style>
-		@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 		body {
-			font-family: "Montserrat", sans-serif;
+			font-family: "Open Sans", sans-serif;
 		}
 	</style>
 </body>
