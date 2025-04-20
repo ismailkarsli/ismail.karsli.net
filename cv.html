@@ -8,8 +8,8 @@
 	<script type="importmap">
 		{
 			"imports": {
-				"vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js",
-				"vue-i18n": "https://unpkg.com/vue-i18n@11/dist/vue-i18n.esm-browser.js"
+				"vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js",
+				"vue-i18n": "https://unpkg.com/vue-i18n@11/dist/vue-i18n.esm-browser.prod.js"
 			}
 		}
 	</script>
@@ -261,9 +261,9 @@
 					lemmy_federate_description: `A tool that help {0} instances connect with each other.`
 				},
 				tr: {
-					"Switch to light mode": "Açık moda geç",
-					"Switch to dark mode": "Karanlık moda geç",
-					"Download as PDF": "PDF Olarak İndir",
+					"Download": "İndir",
+					"Light mode": "Açık mod",
+					"Dark mode": "Karanlık mod",
 					"Software Developer": "Yazılım Geliştirici",
 					"ABOUT ME": "HAKKIMDA",
 					about_me: "Ben İsmail Karslı, modern ve ölçeklenebilir web uygulamaları geliştirmeye odaklanan bir full-stack geliştiriciyim. Magnus AI'da finansal yazılımlar ve API entegrasyonları üzerinde çalışıyorum. Gerçek dünya problemlerini öğrenmeye ve çözmeye tutkuluyum.",
@@ -311,7 +311,7 @@
 				const theme = ref(localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"))
 				const downloadLink = computed(() => {
 					const localeShort = locale.value.startsWith("tr") ? "tr" : "en"
-					if (localeShort === "en") return "/ismail-karsli-cv-tr.pdf"
+					if (localeShort === "tr") return "/ismail-karsli-cv-tr.pdf"
 					return "/ismail-karsli-cv.pdf"
 
 				})
