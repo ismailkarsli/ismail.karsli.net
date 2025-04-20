@@ -22,9 +22,18 @@
 </head>
 
 <body class="m-4 bg-white dark:bg-gray-800 dark">
-	<noscript>
-		Please enable JavaScript or consider upgrading your web browser in order to view this page.
-	</noscript>
+	<div id="loader" class="fixed left-0 top-0 bg-gray-800 w-full h-full flex flex-col items-center justify-center z-50">
+		<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" fill="none">
+			<circle cx="20" cy="20" r="18" stroke="#ccc" stroke-width="4" opacity="0.2" />
+			<path d="M38 20a18 18 0 0 1-18 18" stroke="#4A90E2" stroke-width="4" stroke-linecap="round">
+				<animateTransform attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="1s"
+					repeatCount="indefinite" />
+			</path>
+		</svg>
+		<noscript>
+			Please enable JavaScript or consider upgrading your web browser in order to view this page.
+		</noscript>
+	</div>
 	<div id="app">
 		<div id="cv-page"
 			class="mx-auto relative min-w-[210mm] min-h-[297mm] max-w-[210mm] max-h-[297mm] border-2 bg-white dark:bg-gray-800 dark:text-white">
@@ -379,6 +388,7 @@
 				onMounted(() => {
 					document.body.classList.toggle("dark", theme.value === "dark")
 					document.querySelector("#cv-page").classList.toggle("dark", theme.value === "dark")
+					document.querySelector("#loader").style.display = "none"
 				})
 
 				return {
