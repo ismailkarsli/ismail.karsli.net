@@ -1,3 +1,24 @@
+---
+import { formatDate, getPosts } from "../posts";
+
+const [latest] = await getPosts();
+
+const socials = [
+	{
+		href: "https://www.linkedin.com/in/ismailkarsli/",
+		label: "LinkedIn",
+		viewBox: "0 0 448 512",
+		path: "M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9z",
+	},
+	{
+		href: "https://github.com/ismailkarsli",
+		label: "GitHub",
+		viewBox: "0 0 496 512",
+		path: "M165.9 397.4c0 2-2.3 3.6-5.2 3.6c-3.3.3-5.6-1.3-5.6-3.6c0-2 2.3-3.6 5.2-3.6c3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9c2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9c.3 2 2.9 3.3 5.9 2.6c2.9-.7 4.9-2.6 4.6-4.6c-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2c12.8 2.3 17.3-5.6 17.3-12.1c0-6.2-.3-40.4-.3-61.4c0 0-70 15-84.7-29.8c0 0-11.4-29.1-27.8-36.6c0 0-22.9-15.7 1.6-15.4c0 0 24.9 2 38.6 25.8c21.9 38.6 58.6 27.5 72.9 20.9c2.3-16 8.8-27.1 16-33.7c-55.9-6.2-112.3-14.3-112.3-110.5c0-27.5 7.6-41.3 23.6-58.9c-2.6-6.5-11.1-33.3 2.6-67.9c20.9-6.5 69 27 69 27c20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27c13.7 34.7 5.2 61.4 2.6 67.9c16 17.7 25.8 31.5 25.8 58.9c0 96.5-58.9 104.2-114.8 110.5c9.2 7.9 17 22.9 17 46.4c0 33.7-.3 75.4-.3 83.6c0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252C496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2c1.6 1.6 3.9 2.3 5.2 1c1.3-1 1-3.3-.7-5.2c-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9c1.6 1 3.6.7 4.3-.7c.7-1.3-.3-2.9-2.3-3.9c-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2c2.3 2.3 5.2 2.6 6.5 1c1.3-1.3.7-4.3-1.3-6.2c-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2c-1.4-2.3-4-3.3-5.6-2",
+	},
+];
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -20,93 +41,56 @@
 	</head>
 
 	<body>
-		<div id="main">
-			<header id="header">
-				<h1>İsmail Karslı</h1>
-				<h2 class="subheading">
-					<span data-i18n>Software Developer</span>
-				</h2>
-				<nav>
-					<ul>
-						<li>
-							<a href="/blog/" title="Blog">
-								<img
-									src="https://api.iconify.design/fa-solid/pen-nib.svg?color=white"
-									alt="Blog"
-								/>
-								<span class="label">Blog</span>
-							</a>
-						</li>
-						<li>
-							<a href="mailto:ismail@karsli.net" title="Mail" target="_blank">
-								<img
-									src="https://api.iconify.design/fa-solid/at.svg?color=white"
-									alt="Mail"
-								/>
-								<span class="label">Mail</span>
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://www.linkedin.com/in/ismailkarsli/"
-								title="Linkedin"
-								target="_blank"
-							>
-								<img
-									src="https://api.iconify.design/fa-brands/linkedin.svg?color=white"
-									alt="Linkedin"
-								/>
-								<span class="label">Linkedin</span>
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://github.com/ismailkarsli"
-								title="Github"
-								target="_blank"
-							>
-								<img
-									src="https://api.iconify.design/fa-brands/github.svg?color=white"
-									alt="Github"
-								/>
-								<span class="label">Github</span>
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://discord.com/users/192420948480098304"
-								title="Discord"
-								target="_blank"
-							>
-								<img
-									src="https://api.iconify.design/fa-brands/discord.svg?color=white"
-									alt="Discord"
-								/>
-								<span class="label">Discord</span>
-							</a>
-						</li>
-					</ul>
-				</nav>
-			</header>
-		</div>
-		<script is:inline>
-			const locales = {
-				tr: {
-					"Software Developer": "Yazılım Geliştirici",
-				},
-			};
-			const currentLanguage = navigator.language.split("-")[0];
-			if (currentLanguage && locales[currentLanguage]) {
-				const elements = document.querySelectorAll("[data-i18n]");
-				for (const el of elements) {
-					el.textContent =
-						locales[currentLanguage][el.textContent] ?? el.textContent;
+		<main>
+			<h1>İsmail Karslı</h1>
+			<p class="subheading">Software Developer</p>
+			<section class="blog">
+				{
+					latest && (
+						<a class="latest" href={`/blog/${latest.id}/`}>
+							<span class="latest-label">
+								Latest post ·{" "}
+								<time datetime={latest.data.date.toISOString()}>
+									{formatDate(latest.data.date)}
+								</time>
+							</span>
+							<span class="latest-title">{latest.data.title}</span>
+						</a>
+					)
 				}
-			}
-		</script>
+				<a class="all-posts" href="/blog/">
+					All posts <span aria-hidden="true">→</span>
+				</a>
+			</section>
+		</main>
+		<footer>
+			<a class="mail" href="mailto:iletisim@ismail.karsli.net">iletisim@ismail.karsli.net</a>
+			<ul class="socials">
+				{
+					socials.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								title={link.label}
+								aria-label={link.label}
+								target="_blank"
+								rel="me noopener"
+							>
+								<svg viewBox={link.viewBox} aria-hidden="true">
+									<path fill="currentColor" d={link.path} />
+								</svg>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</footer>
 		<style is:inline>
 			:root {
 				--text-color: #f5f5f5;
+				--muted-color: #a3a3a3;
+				--border-color: rgba(255, 255, 255, 0.14);
+				color-scheme: dark;
 			}
 			@media screen and (max-width: 480px) {
 				html {
@@ -118,74 +102,175 @@
 				font-family: "Open Sans", sans-serif;
 				font-optical-sizing: auto;
 				margin: 0;
-				padding: 0;
-			}
-
-			#main {
 				background-color: #000;
 				color: var(--text-color);
-				height: 100vh;
-				width: 100vw;
+				min-height: 100vh;
+				min-height: 100dvh;
 				display: flex;
+				flex-direction: column;
+			}
+
+			body::before {
+				content: "";
+				position: fixed;
+				inset: 0;
+				z-index: -1;
+				pointer-events: none;
+				background-image:
+					linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+				background-size: 48px 48px;
+				mask-image: radial-gradient(
+					ellipse 70% 60% at 50% 45%,
+					#000 20%,
+					transparent 75%
+				);
+			}
+
+			main {
+				flex: 1;
+				padding: 4rem 1.25rem 2rem;
+				display: flex;
+				flex-direction: column;
 				justify-content: center;
 				align-items: center;
-				#header {
-					text-align: center;
-					h1 {
-						font-size: 4.5em;
-						font-weight: 600;
-						letter-spacing: -0.035em;
-						line-height: 1em;
-						margin: 0;
-					}
-					.subheading {
-						font-size: 1.5em;
-						font-weight: 400;
-						margin: 0.75em 0 0.25em 0;
-					}
+				text-align: center;
+
+				> * {
+					animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 				}
+				> :nth-child(2) {
+					animation-delay: 0.08s;
+				}
+				> :nth-child(3) {
+					animation-delay: 0.16s;
+				}
+			}
 
-				#header nav {
-					margin-top: 2em;
-					ul {
-						display: flex;
-						justify-content: center;
-						gap: 1em;
-						padding: 0;
-						margin: 0;
-						list-style: none;
-						flex-wrap: wrap;
-						li {
-							min-height: 3em;
-							min-width: 3em;
-							line-height: 5.885em;
-							border: 2px solid #c7c7c7;
-							border-radius: 100%;
-							background: transparent;
+			h1 {
+				font-size: 4.5rem;
+				font-weight: 700;
+				letter-spacing: -0.04em;
+				line-height: 1.05;
+				margin: 0;
+				background: linear-gradient(180deg, #fff 30%, #9a9a9a);
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
 
-							a {
-								display: flex;
-								justify-content: center;
-								align-items: center;
-								height: 100%;
-								width: 100%;
+			.subheading {
+				font-size: 1.35rem;
+				font-weight: 400;
+				color: var(--muted-color);
+				margin: 0.75rem 0 0;
+			}
 
-								img {
-									min-height: 1.4em;
-									min-width: 1.4em;
-								}
+			.blog {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 1rem;
+				margin-top: 3rem;
+			}
 
-								.label {
-									display: none;
-								}
-							}
-						}
-						li:hover {
-							transform: scale(1.15);
-							background-color: rgba(255, 255, 255, 0.3);
-							border-color: #ebebeb;
-						}
-					}
+			.all-posts {
+				font-size: 0.95rem;
+				color: var(--muted-color);
+				text-decoration: none;
+				transition: color 0.2s ease;
+			}
+			.all-posts:hover {
+				color: var(--text-color);
+			}
+
+			footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				gap: 1rem;
+				padding: 1.5rem 2rem;
+				font-size: 0.9rem;
+				animation: rise 0.7s 0.3s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+
+				a {
+					color: #737373;
+					text-decoration: none;
+					transition: color 0.2s ease;
+				}
+				a:hover {
+					color: var(--text-color);
+				}
+			}
+
+			.socials {
+				display: flex;
+				gap: 1.25rem;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				a {
+					display: flex;
+				}
+				svg {
+					width: 1.15rem;
+					height: 1.15rem;
+				}
+			}
+
+			@media screen and (max-width: 480px) {
+				footer {
+					flex-direction: column-reverse;
+				}
+			}
+
+			a:focus-visible {
+				outline: 2px solid #fff;
+				outline-offset: 3px;
+			}
+
+			.latest {
+				display: flex;
+				flex-direction: column;
+				gap: 0.2rem;
+				max-width: 28rem;
+				padding: 0.9rem 1.25rem;
+				border: 1px solid var(--border-color);
+				border-radius: 0.75rem;
+				background-color: rgba(255, 255, 255, 0.03);
+				color: inherit;
+				text-decoration: none;
+				transition:
+					background-color 0.2s ease,
+					border-color 0.2s ease;
+			}
+			.latest:hover {
+				background-color: rgba(255, 255, 255, 0.07);
+				border-color: rgba(255, 255, 255, 0.3);
+			}
+			.latest-label {
+				font-size: 0.8rem;
+				color: var(--muted-color);
+				text-transform: uppercase;
+				letter-spacing: 0.08em;
+			}
+			.latest-title {
+				font-size: 1rem;
+				line-height: 1.45;
+			}
+
+			@keyframes rise {
+				from {
+					opacity: 0;
+					transform: translateY(12px);
+				}
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				main > *,
+				footer {
+					animation: none;
 				}
 			}
 		</style>
