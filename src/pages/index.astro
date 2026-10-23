@@ -58,9 +58,10 @@ const socials = [
 						</a>
 					)
 				}
-				<a class="all-posts" href="/blog/">
-					All posts <span aria-hidden="true">→</span>
-				</a>
+				<nav class="more">
+					<a href="/blog/">All posts <span aria-hidden="true">→</span></a>
+					<a href="/about/">About <span aria-hidden="true">→</span></a>
+				</nav>
 			</section>
 		</main>
 		<footer>
@@ -174,14 +175,19 @@ const socials = [
 				margin-top: 3rem;
 			}
 
-			.all-posts {
+			.more {
+				display: flex;
+				gap: 1.5rem;
 				font-size: 0.95rem;
-				color: var(--muted-color);
-				text-decoration: none;
-				transition: color 0.2s ease;
-			}
-			.all-posts:hover {
-				color: var(--text-color);
+
+				a {
+					color: var(--muted-color);
+					text-decoration: none;
+					transition: color 0.2s ease;
+				}
+				a:hover {
+					color: var(--text-color);
+				}
 			}
 
 			footer {

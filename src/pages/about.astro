@@ -1,0 +1,105 @@
+---
+import Base from "../layouts/Base.astro";
+
+const jobs = [
+	{
+		employer: "Magnus AI",
+		url: "https://getmagnus.com",
+		position: "Full Stack Developer",
+		dates: "2022 – present",
+		summary: "APIs, web apps and the market data pipeline for an AI-driven investing platform.",
+	},
+	{
+		employer: "Fintech Yazılım",
+		url: "https://www.fintechyazilim.com/",
+		position: "Full Stack Developer",
+		dates: "2021 – 2022",
+		summary: "Server-side rendered apps with Nuxt.js, Node.js services on MSSQL, and Docker Swarm deployments.",
+	},
+	{
+		employer: "İnteraktif İş",
+		url: "https://www.linkedin.com/company/interaktifis/",
+		position: "Frontend Developer",
+		dates: "2020",
+		summary: "A Node.js and Prisma API, plus an admin panel and user interface in React.",
+	},
+];
+---
+
+<Base title="About" description="About İsmail Karslı, a full-stack developer.">
+	<h1>About</h1>
+	<p>
+		I'm İsmail Karslı, a full-stack developer. I mostly write TypeScript, on the server with Node.js
+		and in the browser with Vue.
+	</p>
+	<p>
+		Since 2022 I've been at <a href="https://getmagnus.com">Magnus AI</a>, an AI-driven investing
+		platform. I work across most of the stack: APIs, web apps, and the market data pipeline
+		behind portfolio optimization, forecasts and backtests.
+	</p>
+	<p>
+		In my spare time I like to work on open source apps.
+	</p>
+
+	<h2>Work</h2>
+	<ul class="timeline">
+		{
+			jobs.map((job) => (
+				<li>
+					<div class="row">
+						<span>
+							<a href={job.url}>{job.employer}</a> · {job.position}
+						</span>
+						<span class="dates">{job.dates}</span>
+					</div>
+					<p>{job.summary}</p>
+				</li>
+			))
+		}
+	</ul>
+
+	<h2>Education</h2>
+	<ul class="timeline">
+		<li>
+			<div class="row">
+				<span>Associate's Degree in Computer Programming, Uludağ University</span>
+				<span class="dates">2019 – 2021</span>
+			</div>
+		</li>
+	</ul>
+
+	<h2>Languages</h2>
+	<p>Turkish (native), English (intermediate).</p>
+</Base>
+
+<style>
+	h2 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin: 2.5rem 0 0.75rem;
+	}
+	.timeline {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		li {
+			padding: 0.5rem 0;
+		}
+		p {
+			margin: 0.15rem 0 0;
+			color: var(--muted-color);
+			font-size: 0.95rem;
+		}
+	}
+	.row {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+	}
+	.dates {
+		flex-shrink: 0;
+		color: var(--muted-color);
+		font-size: 0.9rem;
+	}
+</style>
