@@ -115,43 +115,6 @@ feature, the same mapper runs in the language server and in `tsc`, and it is the
 `tsconfig.json` that decides whether it runs at all. The price is that TypeScript asks the user
 for permission before running it, which I think is fair.
 
-## The hard part: never be wrong
-
-A cache that is sometimes wrong is worse than no cache. If I add a column to `users`, every
-cached query that touches `users` must stop being used, right away, in the type checker,
-without waiting for the background job.
-
-So every entry records what it was computed from:
-
-- the version of the engine that computed it,
-- every table, function and enum its statement could refer to,
-- for errors, the names a "Perhaps you meant" hint could pick from.
-
-"Could refer to" is deliberately generous. I record every word of the statement. In
-`SELECT u.id FROM users u`, that includes `u`. If you later add a table called `u`, the entry
-goes stale, even though in this case it would not matter. Over-approximating costs a little;
-missing one would make the cache lie.
-
-The comparison happens in the type system, every time an entry is looked up: the current schema
-against a snapshot stored in the cache file. If anything differs, the lookup falls through and
-the query is analyzed normally.
-
-This is where I got my favorite bug of the project. My first comparison was "A is assignable to
-B and B is assignable to A". That looked correct, and the tests were happy, until one test made
-a column nullable and the stale entry was still used.
-
-The reason: when TypeScript compares two uses of the same generic alias, like
-`Col<"text", { nullable: true }>` and `Col<"text">`, it does not always look inside. It compares
-the type arguments, using the variance it measured for each type parameter. My `Col` type only
-uses its flags inside a conditional type, and for that TypeScript decided the flags parameter
-does not matter. So the two looked "equal".
-
-The fix was to expand both sides into plain objects before comparing them, so there is no alias
-left to take a shortcut through. Small change, but I am glad a test caught it and not a user.
-
-The rule I kept for the whole design: the cache may make checking faster, but it must never
-change a type or an error. An empty, broken or outdated cache file only means slower.
-
 ## Making the lookup cheap
 
 A cache hit has to be much cheaper than the work it replaces, or there is no point. My target
