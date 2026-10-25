@@ -1,0 +1,149 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+	type?: "website" | "profile" | "article";
+	publishedTime?: Date;
+	jsonLd?: Record<string, unknown>;
+}
+
+const {
+	title,
+	description = "İsmail Karslı is a full-stack software developer specializing in TypeScript, Node.js, and Vue. Personal website, blog posts, and projects.",
+	type = "website",
+	publishedTime,
+	jsonLd,
+} = Astro.props;
+
+const siteUrl = Astro.site ?? new URL("https://ismail.karsli.net");
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const pageTitle = title
+	? title.includes("İsmail Karslı")
+		? title
+		: `${title} · İsmail Karslı`
+	: "İsmail Karslı · Software Developer";
+const ogImageUrl = new URL("/images/android-chrome-512x512.png", siteUrl).href;
+
+const defaultPerson = {
+	"@type": "Person",
+	"@id": "https://ismail.karsli.net/#person",
+	name: "İsmail Karslı",
+	alternateName: "Ismail Karsli",
+	givenName: "İsmail",
+	familyName: "Karslı",
+	url: "https://ismail.karsli.net/",
+	image: ogImageUrl,
+	jobTitle: "Software Developer",
+	email: "mailto:iletisim@ismail.karsli.net",
+	worksFor: {
+		"@type": "Organization",
+		name: "Magnus AI",
+		url: "https://getmagnus.com",
+	},
+	alumniOf: {
+		"@type": "CollegeOrUniversity",
+		name: "Uludağ University",
+	},
+	knowsAbout: [
+		"TypeScript",
+		"JavaScript",
+		"Node.js",
+		"Vue.js",
+		"PostgreSQL",
+		"Full-Stack Development",
+		"Software Engineering",
+	],
+	sameAs: [
+		"https://www.linkedin.com/in/ismailkarsli/",
+		"https://github.com/ismailkarsli",
+	],
+};
+
+const defaultJsonLd =
+	jsonLd ??
+	(type === "article"
+		? {
+				"@context": "https://schema.org",
+				"@type": "BlogPosting",
+				headline: title,
+				description: description,
+				url: canonicalUrl,
+				mainEntityOfPage: canonicalUrl,
+				datePublished: publishedTime?.toISOString(),
+				author: {
+					"@type": "Person",
+					"@id": "https://ismail.karsli.net/#person",
+					name: "İsmail Karslı",
+					alternateName: "Ismail Karsli",
+					url: "https://ismail.karsli.net/",
+				},
+				publisher: {
+					"@type": "Person",
+					"@id": "https://ismail.karsli.net/#person",
+					name: "İsmail Karslı",
+					alternateName: "Ismail Karsli",
+					url: "https://ismail.karsli.net/",
+				},
+			}
+		: {
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebSite",
+						"@id": "https://ismail.karsli.net/#website",
+						url: "https://ismail.karsli.net/",
+						name: "İsmail Karslı",
+						alternateName: "Ismail Karsli",
+						description: description,
+						publisher: { "@id": "https://ismail.karsli.net/#person" },
+						inLanguage: "en",
+					},
+					{
+						"@type": "ProfilePage",
+						"@id": `${canonicalUrl}#profilepage`,
+						url: canonicalUrl,
+						name: pageTitle,
+						isPartOf: { "@id": "https://ismail.karsli.net/#website" },
+						mainEntity: { "@id": "https://ismail.karsli.net/#person" },
+					},
+					defaultPerson,
+				],
+			});
+---
+
+<!-- Primary Meta Tags -->
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+<meta name="author" content="İsmail Karslı" />
+<link rel="canonical" href={canonicalUrl} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="İsmail Karslı" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:locale" content="en_US" />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:image:alt" content="İsmail Karslı" />
+
+{type === "article" && publishedTime && (
+	<meta property="article:published_time" content={publishedTime.toISOString()} />
+	<meta property="article:author" content="İsmail Karslı" />
+)}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<!-- Discoverability & PWA -->
+<link rel="sitemap" href="/sitemap.xml" />
+<link rel="alternate" type="application/rss+xml" title="İsmail Karslı" href="/rss.xml" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(defaultJsonLd)} />

@@ -1,22 +1,38 @@
 ---
+import SEO from "../components/SEO.astro";
+
 interface Props {
 	title?: string;
 	description?: string;
+	type?: "website" | "profile" | "article";
+	publishedTime?: Date;
+	jsonLd?: Record<string, unknown>;
 }
 
-const { title, description = "A personal web site no one cares." } = Astro.props;
+const {
+	title,
+	description = "İsmail Karslı is a full-stack software developer specializing in TypeScript, Node.js, and Vue. Personal website, blog posts, and projects.",
+	type = "website",
+	publishedTime,
+	jsonLd,
+} = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>{title ? `${title} · İsmail Karslı` : "İsmail Karslı"}</title>
-		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#000000" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
+		<SEO
+			title={title}
+			description={description}
+			type={type}
+			publishedTime={publishedTime}
+			jsonLd={jsonLd}
+		/>
 		<link
 			rel="stylesheet"
 			href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
