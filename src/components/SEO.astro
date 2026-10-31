@@ -6,6 +6,7 @@ interface Props {
 	publishedTime?: Date;
 	jsonLd?: Record<string, unknown>;
 	markdownUrl?: string;
+	noindex?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
 	publishedTime,
 	jsonLd,
 	markdownUrl,
+	noindex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://ismail.karsli.net");
@@ -118,7 +120,7 @@ const defaultJsonLd =
 <meta name="title" content={pageTitle} />
 <meta name="description" content={description} />
 <meta name="author" content="İsmail Karslı" />
-<link rel="canonical" href={canonicalUrl} />
+{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonicalUrl} />}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={type} />

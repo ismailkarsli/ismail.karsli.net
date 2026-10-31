@@ -8,6 +8,7 @@ interface Props {
 	publishedTime?: Date;
 	jsonLd?: Record<string, unknown>;
 	markdownUrl?: string;
+	noindex?: boolean;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
 	publishedTime,
 	jsonLd,
 	markdownUrl,
+	noindex,
 } = Astro.props;
 ---
 
@@ -35,6 +37,7 @@ const {
 			publishedTime={publishedTime}
 			jsonLd={jsonLd}
 			markdownUrl={markdownUrl}
+			noindex={noindex}
 		/>
 		<link
 			rel="stylesheet"
