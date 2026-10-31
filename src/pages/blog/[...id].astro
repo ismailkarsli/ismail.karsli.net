@@ -17,6 +17,7 @@ const { Content } = await render(post);
 	description={post.data.description}
 	type="article"
 	publishedTime={post.data.date}
+	markdownUrl={`/blog/${post.id}.md`}
 >
 	<article>
 		<h1>{post.data.title}</h1>

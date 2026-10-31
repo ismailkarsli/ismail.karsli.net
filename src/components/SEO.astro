@@ -5,6 +5,7 @@ interface Props {
 	type?: "website" | "profile" | "article";
 	publishedTime?: Date;
 	jsonLd?: Record<string, unknown>;
+	markdownUrl?: string;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
 	type = "website",
 	publishedTime,
 	jsonLd,
+	markdownUrl,
 } = Astro.props;
 
 const siteUrl = Astro.site ?? new URL("https://ismail.karsli.net");
@@ -143,6 +145,7 @@ const defaultJsonLd =
 <!-- Discoverability & PWA -->
 <link rel="sitemap" href="/sitemap.xml" />
 <link rel="alternate" type="application/rss+xml" title="İsmail Karslı" href="/rss.xml" />
+{markdownUrl && <link rel="alternate" type="text/markdown" href={markdownUrl} />}
 <link rel="manifest" href="/site.webmanifest" />
 
 <!-- Structured Data -->

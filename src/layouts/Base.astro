@@ -7,6 +7,7 @@ interface Props {
 	type?: "website" | "profile" | "article";
 	publishedTime?: Date;
 	jsonLd?: Record<string, unknown>;
+	markdownUrl?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
 	type = "website",
 	publishedTime,
 	jsonLd,
+	markdownUrl,
 } = Astro.props;
 ---
 
@@ -32,6 +34,7 @@ const {
 			type={type}
 			publishedTime={publishedTime}
 			jsonLd={jsonLd}
+			markdownUrl={markdownUrl}
 		/>
 		<link
 			rel="stylesheet"
